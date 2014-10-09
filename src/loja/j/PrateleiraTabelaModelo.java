@@ -1,5 +1,6 @@
 package loja.j;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -46,15 +47,39 @@ public class PrateleiraTabelaModelo extends AbstractTableModel {
                 return "Erro! não existe o atributo desejado.";
         }
     }
-   
-    
+
     @Override
     public boolean isCellEditable (int row, int col) {
-        return false;
+        switch(col) {
+            case 1: 
+                return false;
+            default: 
+                return true;
+        }
     }
-    
-    
+
     public void setValueAt(Object value, int row, int col) { 
+        Produto produto = (Produto) prateleira.get(row);
         
+        switch(col) {
+            case 0:
+                int novoCodigo = Integer.parseInt(value.toString());
+                produto.setIdentificador(novoCodigo);
+                break;
+            case 1:
+                String novoNome = value.toString();
+                produto.setNome(novoNome);
+                break;
+            case 2:
+                String novaDescricao = value.toString();
+                produto.setDescricao(novaDescricao);
+                break;
+            case 3:
+                float novoPreco = Float.parseFloat(value.toString());
+                produto.setPreco(novoPreco);
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Erro! não existe o atributo desejado");
+        }
     }
 }

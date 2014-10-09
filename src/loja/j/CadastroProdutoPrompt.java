@@ -56,7 +56,10 @@ public class CadastroProdutoPrompt extends javax.swing.JFrame {
             Produto mockup = new Produto();
             mockup.setIdentificador(codigo);
             int posicao = Collections.binarySearch(prateleira, mockup);
-
+            
+            posicao = Collections.binarySearch(prateleira, mockup);
+            
+            
             if (posicao < 0 ) { 
                 JOptionPane.showMessageDialog(null, "Não foi encontrado o produto com codigo fornecido (" + codigo + ")." );
             } else { 
